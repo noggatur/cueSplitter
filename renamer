@@ -1,0 +1,8 @@
+#! /bin/sh
+
+for file in split-track*.flac; do
+  newfilename=$(mdls $file -name kMDItemTitle | cut -d\  -f3- | cut -d'"' -f2)
+  mv $file "$newfilename.flac"
+done;
+
+echo Done!
