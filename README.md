@@ -3,31 +3,33 @@
 Splits a `flac-cue` album into separate `flac` files.
 
 
-## Procedure
+## Install
 
 Install required packages.
 ```sh
 brew install cuetools flac ffmpeg shntool
 ```
 
-Split `flac` file by `cue`.
-```sh
-shnsplit -o flac -f file.cue file.flac
-```
-
 Allow user to launch our bash scripts.
 ```sh
-chmod +x ./cuetag ./renamer
+chmod +x ./run ./cuetag ./renamer
 ```
 
-Fill meta-info for the resulting flac files.
+
+## Run
+
 ```sh
-./cuetag file.cue split-track*.flac
+./run path/to/folder/containing/cue-flac-album
 ```
 
-Rename all the files to their original names.
-```sh
-./renamer
+
+## Automator
+
+For creating a service in Automator
+```bash
+cd /absolute/path/to/this/script/folder/
+sh ./run "$1"
+say "Ready!"
 ```
 
 

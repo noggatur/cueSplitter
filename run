@@ -1,0 +1,27 @@
+#! /bin/sh
+
+currentdir=$(pwd)
+
+cd "$1"
+
+for i in *.cue; do
+  cuefile="$i"
+done
+
+flacfile=$(echo $cuefile | sed 's/\.cue/.flac/')
+
+# echo $flacfile
+# echo $cuefile
+# say $(pwd)
+
+# Split `flac` file by `cue`.
+shnsplit -o flac -f "$cuefile" "$flacfile"
+
+# Fill meta-info for the resulting flac files.
+sh "$currentdir/cuetag" "$cuefile" split-track*.flac
+
+# waiting for filling meta-info (where is callback???)
+sleep 5
+
+# Rename all the files to their original names.
+sh "$currentdir/renamer"

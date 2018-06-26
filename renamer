@@ -1,8 +1,10 @@
 #! /bin/sh
 
+foldername="SplittedSongs"; mkdir "$foldername"
+
 for file in split-track*.flac; do
   newfilename=$(mdls $file -name kMDItemTitle | cut -d\  -f3- | cut -d'"' -f2)
-  mv $file "$newfilename.flac"
+  mv $file "$foldername/$newfilename.flac"
 done;
 
 echo Done!

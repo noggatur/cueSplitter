@@ -37,7 +37,7 @@ vorbis()
   # space seperated list of recomended stardard field names
   # see http://www.xiph.org/ogg/vorbis/doc/v-comment.html
   # TRACKTOTAL is not in the Xiph recomendation, but is in common use
-  
+
   fields='TITLE VERSION ALBUM TRACKNUMBER TRACKTOTAL ARTIST PERFORMER COPYRIGHT LICENSE ORGANIZATION DESCRIPTION GENRE DATE LOCATION CONTACT ISRC'
 
   # fields' corresponding cueprint conversion characters
@@ -168,3 +168,6 @@ main()
 }
 
 main "$@"
+
+
+echo "Finished fixing meta-data."
