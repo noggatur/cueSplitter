@@ -26,7 +26,16 @@ chmod +x ./run ./cuetag ./renamer
 ## Automator
 
 For creating a service in Automator (AppleScript)
+
 ```bash
+cd /Users/igor/Repos/cueSplitter/
+sh ./run "$1"
+say "Ready!"
+```
+
+or
+
+```applescript
 on run {input, parameters}
   set bashScript to "echo '" & (input as string) & "' | tr ':' '/' | cut -d '/' -f 2-"
   -- display dialog bashScript
