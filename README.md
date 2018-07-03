@@ -25,11 +25,22 @@ chmod +x ./run ./cuetag ./renamer
 
 ## Automator
 
-For creating a service in Automator
+For creating a service in Automator (AppleScript)
 ```bash
-cd /absolute/path/to/this/script/folder/
-sh ./run "$1"
-say "Ready!"
+on run {input, parameters}
+  set bashScript to "echo '" & (input as string) & "' | tr ':' '/' | cut -d '/' -f 2-"
+  -- display dialog bashScript
+
+  set pathToAlbum to (do shell script bashScript)
+  -- display dialog pathToAlbum
+
+  tell application "Terminal"
+    do script "cd /Users/user/path/to/script; sh ./run '/" & pathToAlbum & "'; say Ready!"
+    close
+  end tell
+
+  return input
+end run
 ```
 
 

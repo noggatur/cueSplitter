@@ -8,14 +8,14 @@ for i in *.cue; do
   cuefile="$i"
 done
 
-flacfile=$(echo $cuefile | sed 's/\.cue/.flac/')
+flacfile=$(echo "$cuefile" | sed 's/\.cue/.flac/')
 
 # echo $flacfile
 # echo $cuefile
 # say $(pwd)
 
 # Split `flac` file by `cue`.
-shnsplit -o flac -f "$cuefile" "$flacfile"
+sh shnsplit -o flac -f "$1/$cuefile" "$1/$flacfile"
 
 # Fill meta-info for the resulting flac files.
 sh "$currentdir/cuetag" "$cuefile" split-track*.flac
